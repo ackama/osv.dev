@@ -8,6 +8,7 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/tidwall/pretty"
 	"gopkg.in/dnaeon/go-vcr.v4/pkg/cassette"
 )
 
@@ -57,7 +58,7 @@ func readBody(t *testing.T, resp *http.Response) string {
 		t.Fatal(err)
 	}
 
-	return string(body)
+	return string(pretty.Pretty(body))
 }
 
 func PlayInteraction(t *testing.T, interaction *cassette.Interaction) *http.Response {
