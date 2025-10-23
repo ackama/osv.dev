@@ -24,7 +24,9 @@ func Test(t *testing.T) {
 					t.Parallel()
 					resp := PlayInteraction(t, interaction)
 
-					snaps.MatchSnapshot(t, readBody(t, resp))
+					snaps.
+						WithConfig(snaps.Filename(determineCassetteName(cas))).
+						MatchSnapshot(t, readBody(t, resp))
 				})
 			}
 		})
